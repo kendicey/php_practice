@@ -1,6 +1,7 @@
 <?php
-$php_version = file_get_contents('http://php.net/releases/?json');
-//print $php_version;
-$php_info = json_decode($php_version);
-print $php_info->{'8'}->source[0]->name;
+// print out the latest version of PHP released
+$url = 'http://php.net/releases/?json';
+$response = file_get_contents($url);
+$info = json_decode($response, true);
+print "Version: {$info[8]['date']}";
 ?>
